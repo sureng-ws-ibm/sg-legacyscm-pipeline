@@ -1,0 +1,27 @@
+cd  <codebase directory>
+
+Curl -LJO https://unified-agent.s3.amazonaws.com/wss-unified-agent.jar
+
+Linux/macOS:
+
+export WS_APIKEY=<my-apiKey>
+export WS_USERKEY=<my-userKey>
+export WS_PRODUCTNAME=<my-product name>
+export WS_PROJECTNAME=<my-project name>
+export WS_WSS_URL=https://<WhiteSourceServer URL>/agent
+
+# <TargetDir> is a directory pre-populated with the source to be scanned. This could be just #OpenSource jars OR entire source code
+
+java -jar wss-unified-agent.jar -d <TargetDir>
+
+Windows:
+
+set WS_APIKEY=<my-apiKey>
+set WS_USERKEY=<my-userKey>
+set WS_PRODUCTNAME=<my-product name>
+set WS_PROJECTNAME=<my-project name>
+set WS_WSS_URL=https://<WhiteSourceServer URL>/agent
+
+# <TargetDir> is a directory pre-populated with the source to be scanned. This could be just #OpenSource jars OR entire source code
+
+java -jar wss-unified-agent.jar  -d <TargetDir>
