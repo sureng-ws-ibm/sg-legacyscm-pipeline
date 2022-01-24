@@ -1,0 +1,25 @@
+<target name="sample" description="WhiteSource Unified Agent Scan – Apache Ant">
+ 
+	<!-- Generic example for scanning dependencies with WhiteSource Unified Agent -->
+ 
+	<property name="ws.api.key" value="********"/>
+	<property name="ws.user.key" value="********"/>
+	<property name="ws.wss.url" value="https://<WhitSource Server URL>/agent"/>
+	<property name="ws.product.name" value="[my-product-name]"/>
+	<property name="ws.project.name" value="[my-project-name]">
+ 
+	<exec executable="curl">
+    	<arg value="-LJO"/>
+    	<arg value="https://unified-agent.s3.amazonaws.com/wss-unified-agent.jar"/>
+	</exec>
+	<echo info="level">Unified Agent downloaded successfully</echo>
+	<java jar="${ws.home.dir}/wss-unified-agent.jar" fork="true">
+    	<arg line="-d ${target.dir}"/>
+            <env key="WS_APIKEY" value="${ws.api.key}"/>
+    	<env key="WS_USERKEY" value="${ws.user.key}"/>
+    	<env key="WS_WSS_URL" value="${ws.wss.url}"/>
+    	<env key="WS_PRODUCTNAME" value="${ws.product.name}"/>
+    	<env key="WS_PROJECTNAME" value="${ws.project.name}"/>
+	</java>
+ 
+</target>
